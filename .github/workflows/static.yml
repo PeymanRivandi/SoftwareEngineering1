@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Exam Notes</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Two-column layout for compactness while keeping readability */
+        .content-columns {
+            column-count: 2;
+            column-gap: 30px;
+            column-fill: balance;
+        }
+
+        /* Headers */
+        h1 {
+            column-span: all; /* Main titles span across columns */
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            margin: 25px 0 15px 0;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            break-after: avoid;
+            border-bottom: 3px solid #1a252f;
+        }
+        
+        /* First H1 shouldn't have top margin */
+        h1:first-of-type {
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 14px;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 4px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 12px;
+            color: var(--primary-color);
+            margin-top: 12px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            break-after: avoid;
+        }
+
+        h4 {
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin: 0 0 8px 0;
+            text-align: justify;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 0 0 10px 0;
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            margin-bottom: 12px;
+            break-inside: avoid;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 5px 8px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--light-bg);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        /* Blockquotes for definitions */
+        blockquote {
+            margin: 10px 0;
+            padding: 8px 12px;
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--accent-color);
+            font-style: italic;
+            break-inside: avoid;
+        }
+
+        /* Code blocks */
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 10px;
+            color: #d63384;
+        }
+
+        pre {
+            display: block;
+            background-color: #f8f9fa;
+            padding: 8px;
+            white-space: pre-wrap;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 10px;
+            break-inside: avoid;
+        }
+
+        /* Divider lines */
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        /* Specific formatting for exam warnings/tips */
+        strong {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page-container {
+                box-shadow: none;
+                padding: 0;
+                width: 100%;
+                max-width: none;
+            }
+            h1 {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <div class="content-columns">
+
+        <!-- ================= DAY 1 CONTENT ================= -->
+        <h1>Software Engineering 1</h1>
+        
+        <h2>1. What is Software Engineering</h2>
+        <p><strong>Definition (exam-safe):</strong></p>
+        <blockquote>
+            Software Engineering is the disciplined, multi-person development, operation, and maintenance of software systems, including documentation, verification, and management.
+        </blockquote>
+
+        <h3>Software Engineering vs Solo Programming</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Solo Programming</th>
+                    <th>Software Engineering</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Team size</td>
+                    <td>One person</td>
+                    <td>Multiple people</td>
+                </tr>
+                <tr>
+                    <td>Lifespan</td>
+                    <td>Short</td>
+                    <td>Long</td>
+                </tr>
+                <tr>
+                    <td>Output</td>
+                    <td>Mostly code</td>
+                    <td>Code + documents</td>
+                </tr>
+                <tr>
+                    <td>Requirements</td>
+                    <td>Mostly functional</td>
+                    <td>Functional + non-functional</td>
+                </tr>
+                <tr>
+                    <td>Maintenance</td>
+                    <td>Minimal</td>
+                    <td>Heavy</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Key idea:</strong><br>
+        Software Engineering exists because software is <strong>complex</strong>, <strong>long-living</strong>, and <strong>expensive to change</strong>.</p>
+
+        <h2>2. Software Process</h2>
+        <h3>Three main phases</h3>
+        <ol>
+            <li><strong>Development</strong></li>
+            <li><strong>Operation</strong></li>
+            <li><strong>Maintenance</strong></li>
+        </ol>
+        <p><strong>Important:</strong><br>
+        Maintenance is usually the <strong>longest and most expensive</strong> phase.</p>
+
+        <h3>Development phase activities</h3>
+        <ol>
+            <li><strong>Requirements Engineering</strong>
+                <ul>
+                    <li>What the system should do</li>
+                    <li>Who will use it</li>
+                    <li>Constraints</li>
+                </ul>
+            </li>
+            <li><strong>Design (Architecture & Design)</strong>
+                <ul>
+                    <li>How the system is structured</li>
+                    <li>Components and their organization</li>
+                </ul>
+            </li>
+            <li><strong>Implementation</strong>
+                <ul>
+                    <li>Writing code</li>
+                    <li>Integrating components</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Exam sentence:</strong></p>
+        <blockquote>
+            Maintenance is a sequence of constrained development phases, limited by previous design and implementation choices.
+        </blockquote>
+
+        <h2>3. Requirements</h2>
+        <h3>Definition</h3>
+        <blockquote>
+            A requirement is a description of a system property or service and its constraints.
+        </blockquote>
+
+        <h3>Quality of Requirements (Exam Question)</h3>
+        <p>Requirements should be:</p>
+        <ul>
+            <li><strong>Complete</strong> → all required functionality is described</li>
+            <li><strong>Consistent</strong> → no contradictions</li>
+        </ul>
+        <p><strong>Correct answer in exams:</strong><br>
+        ✔ Complete and consistent<br>
+        ❌ Ambiguous, redundant, unreliable</p>
+
+        <h2>4. Functional vs Non-Functional Requirements</h2>
+        <h3>Functional Requirements (FR)</h3>
+        <p>Describe <strong>WHAT</strong> the system does.</p>
+        <p>Examples:</p>
+        <ul>
+            <li>The system shall allow users to reserve a book.</li>
+            <li>The system shall send bus waiting times via SMS.</li>
+        </ul>
+
+        <h3>Non-Functional Requirements (NFR)</h3>
+        <p>Describe <strong>HOW WELL</strong> the system performs its functions.</p>
+        <p>Common types:</p>
+        <ul>
+            <li>Usability</li>
+            <li>Reliability</li>
+            <li>Performance</li>
+            <li>Security</li>
+            <li>Maintainability</li>
+            <li>Portability</li>
+            <li>Safety</li>
+        </ul>
+        <p><strong>Critical rule:</strong><br>
+        Non-functional requirements must be <strong>measurable</strong>.</p>
+        <p>Examples:</p>
+        <ul>
+            <li>❌ The system should be easy to use</li>
+            <li>✅ Any user with at least 2 years of computer experience shall use function X without training</li>
+        </ul>
+
+        <h3>Relationship between FR and NFR</h3>
+        <ul>
+            <li>Functional requirements define <strong>services</strong></li>
+            <li>Non-functional requirements define <strong>constraints</strong></li>
+            <li>Non-functional requirements may conflict</li>
+            <li><strong>Stakeholders</strong> decide priority, not developers</li>
+        </ul>
+
+        <h2>5. Verification vs Validation</h2>
+        <h3>Verification</h3>
+        <blockquote>
+            Are we building the product right?
+        </blockquote>
+        <ul>
+            <li>Internal correctness</li>
+            <li>Developer perspective</li>
+            <li>Checks against specifications</li>
+        </ul>
+
+        <h3>Validation</h3>
+        <blockquote>
+            Are we building the right product?
+        </blockquote>
+        <ul>
+            <li>External correctness</li>
+            <li>User/stakeholder perspective</li>
+            <li>Real-world usefulness</li>
+        </ul>
+        <p><strong>Important:</strong><br>
+        A system can be verified but not valid, or valid but not verified.</p>
+
+        <h2>6. Maintenance and Cost</h2>
+        <ul>
+            <li>Maintenance can reach <strong>up to 60% of total software cost</strong></li>
+            <li>Reasons:
+                <ul>
+                    <li>Long duration</li>
+                    <li>Regression testing</li>
+                    <li>Constraints from previous decisions</li>
+                    <li>Fixing one defect may introduce others</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>7. Day 1 Topics Appearing in Past Exams</h2>
+        <ul>
+            <li>Correctness definition</li>
+            <li>Functional vs non-functional requirements</li>
+            <li>Quality of requirements</li>
+            <li>Verification vs validation</li>
+            <li>Cost distribution (development vs maintenance)</li>
+            <li>Calendar time vs effort</li>
+            <li>Measurable usability requirements</li>
+            <li>Conflicts between non-functional requirements</li>
+        </ul>
+
+        <h2>8. Ultra-Short Memory Version</h2>
+        <ol>
+            <li>Maintenance is longer and more expensive than development</li>
+            <li>Requirements must be complete and consistent</li>
+            <li>Functional = WHAT, Non-functional = HOW</li>
+            <li>Non-functional requirements must be measurable</li>
+            <li>Verification = right product built right, Validation = right product</li>
+        </ol>
+
+        <!-- ================= DAY 2 CONTENT ================= -->
+        <h1>Context Diagram, Actors & Interfaces</h1>
+
+        <h2>1. Context Diagram</h2>
+        <p><strong>Definition:</strong></p>
+        <blockquote>
+            A context diagram defines the system boundary and shows all external actors interacting with the system, together with the interfaces.
+        </blockquote>
+        <p>Key points:</p>
+        <ul>
+            <li>Shows IN / OUT of the system</li>
+            <li>High-level view</li>
+            <li>No internal components</li>
+            <li>Usually drawn as UML Use Case–style diagram</li>
+        </ul>
+
+        <h2>2. Actors</h2>
+        <p><strong>Definition:</strong></p>
+        <blockquote>
+            An actor is an external human or system that interacts with the system under development.
+        </blockquote>
+
+        <h3>Actors CAN be:</h3>
+        <ul>
+            <li>Users</li>
+            <li>Administrators</li>
+            <li>External systems</li>
+            <li>External services</li>
+            <li>External devices</li>
+        </ul>
+
+        <h3>Actors are NOT:</h3>
+        <ul>
+            <li>Buttons</li>
+            <li>Screens</li>
+            <li>Touchscreens</li>
+            <li>Microphones</li>
+            <li>Speakers</li>
+            <li>USB ports</li>
+            <li>Bluetooth</li>
+            <li>Internal software modules</li>
+        </ul>
+        <p><strong>Exam warning:</strong><br>
+        Buttons and hardware components are NEVER actors.</p>
+
+        <h2>3. System Boundary Rule</h2>
+        <ul>
+            <li>If you are designing it → INSIDE the system</li>
+            <li>If you are NOT designing it → ACTOR</li>
+        </ul>
+        <p>External systems are actors even if tightly connected.</p>
+
+        <h2>4. Interfaces (Mandatory)</h2>
+        <p>Each actor must have an interface with the system.</p>
+
+        <h3>Physical Interface</h3>
+        <blockquote>
+            The concrete means used to interact with the system.
+        </blockquote>
+        <p>Examples:</p>
+        <ul>
+            <li>Smartphone</li>
+            <li>PC</li>
+            <li>Display</li>
+            <li>Keyboard</li>
+            <li>Network connection</li>
+            <li>SMS</li>
+        </ul>
+
+        <h3>Logical Interface</h3>
+        <blockquote>
+            The information or commands exchanged, independent of the physical medium.
+        </blockquote>
+        <p>Examples:</p>
+        <ul>
+            <li>Submit order</li>
+            <li>Voice commands</li>
+            <li>Button commands</li>
+            <li>API calls</li>
+            <li>Text-to-speech</li>
+            <li>Data exchange (JSON / XML)</li>
+        </ul>
+
+        <h2>5. Example Interface Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Actor</th>
+                    <th>Physical Interface</th>
+                    <th>Logical Interface</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>User</td>
+                    <td>Smartphone</td>
+                    <td>Submit request, receive info</td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td>PC</td>
+                    <td>Configure system</td>
+                </tr>
+                <tr>
+                    <td>External Service</td>
+                    <td>Network</td>
+                    <td>API calls</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>6. Typical Exam Mistakes</h2>
+        <ul>
+            <li>Treating buttons or screens as actors</li>
+            <li>Treating USB or Bluetooth as actors</li>
+            <li>Mixing physical and logical interfaces</li>
+            <li>Including internal components in context diagram</li>
+            <li>Forgetting to specify interfaces</li>
+        </ul>
+
+        <h2>7. Where DAY 2 Appears in Exams</h2>
+        <ul>
+            <li>Context diagram definition</li>
+            <li>Actor identification</li>
+            <li>Physical vs logical interfaces</li>
+            <li>Typical errors explicitly mentioned by professor</li>
+        </ul>
+
+        <h2>8. Ultra-Short Memory Version</h2>
+        <ul>
+            <li>Actors are EXTERNAL</li>
+            <li>Buttons are NOT actors</li>
+            <li>Physical = means</li>
+            <li>Logical = commands/data</li>
+            <li>One system, many actors</li>
+        </ul>
+
+        <h2>9. Arrows in Context Diagrams</h2>
+        <h3>Meaning of Arrows</h3>
+        <p>Arrows represent the <strong>direction of information exchange</strong> between actor and system.</p>
+        <p>They do NOT represent:</p>
+        <ul>
+            <li>execution order</li>
+            <li>control flow</li>
+            <li>sequence of actions</li>
+        </ul>
+
+        <h3>Types of Arrows</h3>
+        <h4>Actor → System</h4>
+        <p>Use when:</p>
+        <ul>
+            <li>Actor sends input or a request</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Submit form</li>
+            <li>Send SMS request</li>
+            <li>Issue command</li>
+        </ul>
+
+        <h4>System → Actor</h4>
+        <p>Use when:</p>
+        <ul>
+            <li>System sends output or information</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Display results</li>
+            <li>Send notification</li>
+            <li>Read message aloud</li>
+        </ul>
+
+        <h4>Actor ↔ System (Bidirectional Arrow)</h4>
+        <p>Use when:</p>
+        <ul>
+            <li>Actor sends a request AND</li>
+            <li>System sends a response</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Authentication service</li>
+            <li>Payment service</li>
+            <li>External APIs</li>
+            <li>Smartphone integration</li>
+        </ul>
+
+        <h2>10. One Arrow vs Two Arrows</h2>
+        <p>Two representations are possible:</p>
+        <h3>Option A — Two one-direction arrows</h3>
+        <p>Actor → System<br>
+        System → Actor</p>
+        <p>Used when:</p>
+        <ul>
+            <li>Request and response are conceptually distinct</li>
+            <li>Exam text explicitly separates them</li>
+        </ul>
+
+        <h3>Option B — One bidirectional arrow</h3>
+        <p>Actor ↔ System</p>
+        <p>Used when:</p>
+        <ul>
+            <li>Interaction is symmetric</li>
+            <li>Request/response are tightly coupled</li>
+            <li>Cleaner representation is preferred</li>
+        </ul>
+
+        <h3>Exam Rule (IMPORTANT)</h3>
+        <ul>
+            <li>Both representations are valid</li>
+            <li>Wrong direction is penalized</li>
+            <li>When unsure, use <strong>bidirectional arrow</strong></li>
+        </ul>
+
+        <h2>11. Safe Exam Strategy</h2>
+        <ul>
+            <li>Always identify WHO sends information</li>
+            <li>Always identify WHO receives information</li>
+            <li>If interaction is two-way, bidirectional arrow is safest</li>
+            <li>Never use arrows to represent internal logic</li>
+        </ul>
+
+        <h2>12. Ultra-Short Memory Version (Arrows)</h2>
+        <ul>
+            <li>Arrows = information flow</li>
+            <li>Actor → System = request</li>
+            <li>System → Actor = response</li>
+            <li>↔ = request + response</li>
+            <li>When unsure, use ↔</li>
+        </ul>
+
+        <!-- ================= DAY 3 CONTENT ================= -->
+        <h1>Glossary & UML Class Diagram</h1>
+
+        <h2>1. What is a Domain?</h2>
+        <p><strong>Definition (exam-safe):</strong></p>
+        <blockquote>
+            The domain is the real-world problem area that the software system models.
+        </blockquote>
+        <p>Examples:</p>
+        <ul>
+            <li>Library system → library domain</li>
+            <li>Bus information system → public transportation domain</li>
+            <li>Banking app → financial domain</li>
+        </ul>
+
+        <h2>2. Domain Classes (Glossary Concepts)</h2>
+        <p>Domain classes represent:</p>
+        <ul>
+            <li>real-world entities</li>
+            <li>information objects</li>
+            <li>concepts that exist independently of software</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>User</li>
+            <li>Book</li>
+            <li>Loan</li>
+            <li>Bus</li>
+            <li>BusLine</li>
+            <li>BusStop</li>
+        </ul>
+
+        <h2>X. When a Concept Is a Domain Class (CRITICAL)</h2>
+        <p><strong>Important rule:</strong></p>
+        <blockquote>
+            Not every concept mentioned in the text becomes a class.
+        </blockquote>
+        <p>A concept is a <strong>domain class</strong> ONLY IF:</p>
+        <ul>
+            <li>it exists in the real world independently of the software AND</li>
+            <li>it participates in relationships being modeled OR</li>
+            <li>it has attributes relevant to the problem</li>
+        </ul>
+
+        <h3>Context vs Domain Class</h3>
+        <p>Some concepts are mentioned only to give context.</p>
+        <p><strong>Context concepts:</strong></p>
+        <ul>
+            <li>provide background</li>
+            <li>do not add constraints</li>
+            <li>do not participate in relationships</li>
+        </ul>
+        <p>Context concepts are <strong>NOT classes</strong>.</p>
+        <p>Examples (usually NOT classes):</p>
+        <ul>
+            <li>University (when only context)</li>
+            <li>System</li>
+            <li>Application</li>
+            <li>Platform</li>
+            <li>Online shop (when it is the system itself)</li>
+        </ul>
+
+        <h3>Domain Class Examples</h3>
+        <p>Examples of valid domain classes:</p>
+        <ul>
+            <li>BusCompany (manages bus lines)</li>
+            <li>Library (owns books, manages loans)</li>
+            <li>University (ONLY if it offers courses, owns students, defines rules)</li>
+            <li>Customer</li>
+            <li>Order</li>
+            <li>Product</li>
+        </ul>
+
+        <h3>Exam Decision Test (USE THIS)</h3>
+        <p>Ask yourself:</p>
+        <blockquote>
+            “If I remove this concept, do the remaining classes and relationships still fully describe the problem?”
+        </blockquote>
+        <ul>
+            <li>YES → it is context, NOT a class</li>
+            <li>NO → it MUST be a class</li>
+        </ul>
+
+        <h3>Important Exam Rule</h3>
+        <blockquote>
+            Mentioned in the text ≠ must be a class.
+        </blockquote>
+        <p>Only model what is necessary to represent the domain logic.</p>
+
+        <h2>3. What NOT to include in the Glossary</h2>
+        <p>Do NOT include:</p>
+        <ul>
+            <li>Buttons</li>
+            <li>Screens</li>
+            <li>Touchscreens</li>
+            <li>Microphones</li>
+            <li>Speakers</li>
+            <li>Databases</li>
+            <li>APIs</li>
+            <li>Servers</li>
+            <li>Internal software components</li>
+        </ul>
+        <p>These belong to design, not domain modeling.</p>
+
+        <h2>4. Attributes vs Relationships (CRITICAL)</h2>
+        <h3>Attributes</h3>
+        <ul>
+            <li>Simple values</li>
+            <li>Primitive or descriptive data</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>name</li>
+            <li>id</li>
+            <li>date</li>
+            <li>latitude</li>
+            <li>longitude</li>
+        </ul>
+
+        <h3>Relationships</h3>
+        <ul>
+            <li>Links between domain classes</li>
+            <li>Represent real-world associations</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>User — Loan</li>
+            <li>BusLine — BusStop</li>
+            <li>Library — Book</li>
+        </ul>
+        <p><strong>Exam rule:</strong></p>
+        <blockquote>
+            If something is another class, it is NOT an attribute.
+        </blockquote>
+
+        <h2>5. Multiplicity (EXAM ESSENTIAL)</h2>
+        <p>Multiplicity shows how many instances can be related.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>exactly one</td>
+                </tr>
+                <tr>
+                    <td>0..1</td>
+                    <td>zero or one</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>zero or more</td>
+                </tr>
+                <tr>
+                    <td>1..*</td>
+                    <td>one or more</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>In exams:</p>
+        <ul>
+            <li><code>*</code> is commonly used instead of <code>0..*</code></li>
+        </ul>
+
+        <h2>6. Association Labels (Text on Lines)</h2>
+        <ul>
+            <li>Describe the meaning of the relationship</li>
+            <li>Written as verbs or verb phrases</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>manages</li>
+            <li>offers</li>
+            <li>describes</li>
+            <li>allocated to</li>
+        </ul>
+        <p>Rules:</p>
+        <ul>
+            <li>Optional</li>
+            <li>Helpful but not mandatory</li>
+            <li>Never method names</li>
+        </ul>
+
+        <h2>7. Aggregation & Composition (IMPORTANT NOTE)</h2>
+        <ul>
+            <li>Explained in the handbook</li>
+            <li>Mentioned in the summary</li>
+            <li><strong>NOT used in exam solutions</strong></li>
+        </ul>
+        <p><strong>Exam-safe rule:</strong></p>
+        <blockquote>
+            Use simple associations with multiplicities. Avoid diamonds.
+        </blockquote>
+
+        <h2>8. Modeling Rules (MEMORIZE)</h2>
+        <ol>
+            <li>Model only what is explicitly stated</li>
+            <li>Do not invent requirements</li>
+            <li>One relationship = one line</li>
+            <li>Put multiplicities on both ends</li>
+            <li>Prefer simplicity over completeness</li>
+        </ol>
+
+        <h2>9. Ultra-Short Memory Version</h2>
+        <ul>
+            <li>Domain = real world</li>
+            <li>Classes = domain concepts</li>
+            <li>Attributes = simple values</li>
+            <li>Relationships = links between classes</li>
+            <li>Multiplicity matters more than inheritance</li>
+        </ul>
+
+        <h2>10. Multiplicity — How to Get It Right (CRITICAL)</h2>
+        <h3>Golden Rule</h3>
+        <p>Multiplicity written near a class answers:</p>
+        <blockquote>
+            “For ONE instance of the opposite class, how many of THIS class exist?”
+        </blockquote>
+
+        <h2>11. Common Multiplicity Patterns</h2>
+        <h3>One-to-Many</h3>
+        <pre>A 1 —— * B</pre>
+        <p>One A is related to many B<br>
+        Each B is related to exactly one A</p>
+
+        <h3>Many-to-Many</h3>
+        <pre>A * —— * B</pre>
+        <p>Many A relate to many B</p>
+
+        <h3>Mandatory Containment</h3>
+        <pre>A 1..* —— * B</pre>
+        <p>Each A must be linked to at least one B<br>
+        Each B can be linked to many A</p>
+
+        <h2>12. Minimum Cardinality</h2>
+        <ul>
+            <li><code>*</code> means <code>0..*</code></li>
+            <li><code>1..*</code> means <strong>at least one</strong></li>
+            <li>Use <code>1..*</code> only when explicitly stated in the text</li>
+        </ul>
+
+        <h2>13. Association Class Hint</h2>
+        <p>If a relationship needs attributes (e.g. date, status):</p>
+        <ul>
+            <li>Introduce a new class</li>
+            <li>Connect it with two 1–* relationships</li>
+        </ul>
+        <p>Example:</p>
+        <pre>
+Student 1 —— * Enrollment
+Course  1 —— * Enrollment
+        </pre>
+
+        <h2>14. Exam Survival Rules</h2>
+        <ol>
+            <li>Never guess multiplicities</li>
+            <li>Never invent constraints</li>
+            <li>Always read multiplicity from the opposite side</li>
+            <li>When in doubt, choose the simplest valid model</li>
+        </ol>
+
+        <h2>⚠️ Multiplicity — FINAL RULE (NO CONFUSION)</h2>
+        <p>Multiplicity is written <strong>next to the class it counts</strong>.</p>
+        <p>Procedure:</p>
+        <ol>
+            <li>Stand on class A</li>
+            <li>Ask: “For ONE A, how many B?”</li>
+            <li>Write the answer next to B</li>
+            <li>Repeat in the opposite direction</li>
+        </ol>
+        <p>Example:</p>
+        <ul>
+            <li>“One order contains many products”<br>
+            → write <code>*</code> next to Product</li>
+        </ul>
+        <p>Correct pattern:</p>
+        <pre>Order * —— Product</pre>
+        <p>Always sanity-check by reading:</p>
+        <ul>
+            <li>ONE A → how many B?</li>
+            <li>ONE B → how many A?</li>
+        </ul>
+
+        <h2>Z. Attributes vs Subclasses (VERY IMPORTANT)</h2>
+        <h3>Core Rule</h3>
+        <blockquote>
+            Attributes describe a thing.<br>
+            Subclasses define what kind of thing it is.
+        </blockquote>
+
+        <h3>When to use an Attribute</h3>
+        <p>Use an attribute when:</p>
+        <ul>
+            <li>it is a simple value</li>
+            <li>it cannot exist independently</li>
+            <li>there is exactly one per instance</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>timestamp</li>
+            <li>value</li>
+            <li>unit</li>
+            <li>name</li>
+            <li>price</li>
+        </ul>
+
+        <h3>When to use a Subclass (Inheritance)</h3>
+        <p>Use a subclass when:</p>
+        <ul>
+            <li>it represents a different type/kind of the parent</li>
+            <li>multiple instances can exist at the same time</li>
+            <li>it may add extra attributes</li>
+            <li>it shares most structure with the parent</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Weight IS A Measurement</li>
+            <li>Heart rate IS A Measurement</li>
+            <li>Feeding action IS A Measurement (with extra attribute)</li>
+        </ul>
+
+        <h3>Exam Sanity Test (USE THIS)</h3>
+        <p>Ask:</p>
+        <blockquote>
+            “Can I have more than one of these at the same time?”
+        </blockquote>
+        <ul>
+            <li>NO → attribute</li>
+            <li>YES → subclass</li>
+        </ul>
+
+        <h3>Exam Warning</h3>
+        <p>Do NOT model different kinds of things as attributes.<br>
+        This leads to null values and incorrect domain models.</p>
+
+        <h2>Y. Inheritance, Association Class, and Notes (ADVANCED)</h2>
+        <h3>Inheritance (Generalization)</h3>
+        <ul>
+            <li>Used when one class is a specialization of another</li>
+            <li>Arrow with empty triangle points to parent class</li>
+        </ul>
+        <p>Example:</p>
+        <pre>Weight ─▷ Measurement</pre>
+        <p>Meaning:</p>
+        <ul>
+            <li>Weight IS A Measurement</li>
+            <li>Child inherits attributes of parent</li>
+        </ul>
+        <p>Use only when obvious.</p>
+
+        <h3>Association Class</h3>
+        <ul>
+            <li>Used when a relationship has its own attributes</li>
+            <li>Drawn as a class connected to an association with a dashed line</li>
+        </ul>
+        <p>Example:</p>
+        <ul>
+            <li>Dish — Ingredient</li>
+            <li>Quantity belongs to the relationship, not to either class</li>
+        </ul>
+        <p>Equivalent to introducing a class like:</p>
+        <pre>Dish 1 —— * Quantity * —— 1 Ingredient</pre>
+
+        <h3>UML Notes</h3>
+        <ul>
+            <li>Used for explanations only</li>
+            <li>Do not represent domain concepts</li>
+            <li>Do not affect grading</li>
+            <li>Shown as a folded-corner box with dashed line</li>
+        </ul>
+
+        <h3>Exam Safety Rule</h3>
+        <ul>
+            <li>Prefer simple associations</li>
+            <li>Use inheritance or association class only when clearly justified</li>
+        </ul>
+
+        <h3>UML Glossary – Attributes and Methods</h3>
+        <p>For glossary questions:</p>
+        <ul>
+            <li>Classes may be empty</li>
+            <li>Attributes are optional and can be untyped</li>
+            <li>Methods are not required</li>
+            <li>Focus is on concepts and relationships, not implementation</li>
+        </ul>
+
+        <!-- ================= DAY 4 CONTENT ================= -->
+        <h1>Use Case Diagrams (Exam-Oriented)</h1>
+
+        <h2>1. Use Case Definition</h2>
+        <p>A use case describes a goal-oriented interaction between an actor and the system.</p>
+
+        <h2>2. What a Use Case Is / Is Not</h2>
+        <p>IS:</p>
+        <ul>
+            <li>Borrow book</li>
+            <li>Reserve book</li>
+            <li>Download file</li>
+            <li>Manage account</li>
+        </ul>
+        <p>IS NOT:</p>
+        <ul>
+            <li>Click button</li>
+            <li>Open screen</li>
+            <li>Save to database</li>
+        </ul>
+
+        <h2>3. Actors</h2>
+        <ul>
+            <li>Same actors as context diagram</li>
+            <li>No UI components</li>
+            <li>No internal modules</li>
+        </ul>
+
+        <h2>4. «include» vs «extend» (CRITICAL)</h2>
+        <h3>«include»</h3>
+        <ul>
+            <li>Mandatory behavior</li>
+            <li>Always executed</li>
+        </ul>
+        <p>Example:</p>
+        <pre>Borrow book «include» Check availability</pre>
+
+        <h3>«extend»</h3>
+        <ul>
+            <li>Optional behavior</li>
+            <li>Executed only under conditions</li>
+        </ul>
+        <p>Example:</p>
+        <pre>Send notification «extend» Borrow book</pre>
+
+        <h2>5. Exam Rules</h2>
+        <ul>
+            <li>Prefer few meaningful use cases</li>
+            <li>Do not model UI actions</li>
+            <li>Use include for mandatory behavior</li>
+            <li>Use extend for optional behavior</li>
+        </ul>
+
+        <h2>6. How to Decide «include» vs «extend» (CRITICAL)</h2>
+        <h3>Core Rule</h3>
+        <p>Use cases represent USER GOALS, not system steps.</p>
+
+        <h3>Decision Question (MEMORIZE THIS)</h3>
+        <p>Ask:</p>
+        <blockquote>
+            “If I do A, do I ALWAYS have to do B to achieve my goal?”
+        </blockquote>
+        <ul>
+            <li>YES → <code>A &lt;&lt;include&gt;&gt; B</code></li>
+            <li>NO (only sometimes) → <code>B &lt;&lt;extend&gt;&gt; A</code></li>
+        </ul>
+
+        <h3>Direction Rule</h3>
+        <ul>
+            <li>«include» arrow points to the REQUIRED use case</li>
+            <li>«extend» arrow points to the BASE use case</li>
+        </ul>
+
+        <h3>Common Exam Patterns</h3>
+        <ul>
+            <li>Login is almost always «include»</li>
+            <li>Confirmation / notification is usually «include»</li>
+            <li>Error handling or alternatives are «extend»</li>
+        </ul>
+
+        <h3>Sanity Check</h3>
+        <p>If you reverse an «include» and it sounds wrong in English, the direction is wrong.</p>
+
+        <h2>Y. Actor Goals vs System Behavior (IMPORTANT)</h2>
+        <p>Use cases represent ACTOR GOALS.</p>
+        <p>Do NOT model:</p>
+        <ul>
+            <li>internal system actions</li>
+            <li>background processes</li>
+            <li>automatic or time-based behavior</li>
+        </ul>
+        <p>Examples of NON-goal behavior:</p>
+        <ul>
+            <li>Send reminder</li>
+            <li>Save data</li>
+            <li>Update database</li>
+            <li>Calculate deadline</li>
+        </ul>
+        <p>These may appear as use cases ONLY if explicitly required by the exam,
+        and are usually not included or extended.</p>
+
+        <h2>Z. Immediate vs Delayed Behavior (CRITICAL)</h2>
+        <p>Use cases model behavior that happens DURING the actor’s interaction.</p>
+
+        <h3>Include is allowed ONLY if:</h3>
+        <ul>
+            <li>the behavior happens immediately</li>
+            <li>it is required to complete the user’s goal</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Send confirmation → include</li>
+            <li>Check availability → include</li>
+        </ul>
+
+        <h3>Do NOT include behavior that:</h3>
+        <ul>
+            <li>happens later in time</li>
+            <li>is scheduled or automatic</li>
+            <li>is not required to complete the interaction</li>
+        </ul>
+        <p>Examples:</p>
+        <ul>
+            <li>Send due-date reminder</li>
+            <li>Send weekly report</li>
+            <li>Automatic cleanup</li>
+        </ul>
+
+        <!-- ================= DAY 5 CONTENT ================= -->
+        <h1>Software Testing (Exam-Oriented)</h1>
+
+        <h2>1. Definition</h2>
+        <p>Software testing is the process of executing a program with the intent of finding faults.</p>
+        <p>Testing shows the presence of bugs, not their absence.</p>
+
+        <h2>2. Black-Box vs White-Box Testing</h2>
+        <h3>Black-Box Testing</h3>
+        <ul>
+            <li>Based on specification</li>
+            <li>No knowledge of code</li>
+            <li>Focus on inputs and outputs</li>
+        </ul>
+
+        <h3>White-Box Testing</h3>
+        <ul>
+            <li>Based on internal structure</li>
+            <li>Full knowledge of code</li>
+            <li>Focus on statements and branches</li>
+        </ul>
+
+        <h2>3. Equivalence Partitioning</h2>
+        <ul>
+            <li>Divide input domain into equivalence classes</li>
+            <li>Test one representative per class</li>
+            <li>Includes valid and invalid classes</li>
+        </ul>
+
+        <h2>4. Boundary Value Analysis (BVA)</h2>
+        <ul>
+            <li>Errors often occur at boundaries</li>
+            <li>Test min, min+1, max-1, max</li>
+            <li>Complements equivalence partitioning</li>
+        </ul>
+
+        <h2>5. White-Box Criteria</h2>
+        <ul>
+            <li>Statement coverage</li>
+            <li>Branch coverage</li>
+            <li>Path coverage</li>
+        </ul>
+
+        <h2>6. Exam Rules</h2>
+        <ul>
+            <li>Testing cannot prove correctness</li>
+            <li>Always include invalid inputs</li>
+            <li>Boundary tests are critical</li>
+        </ul>
+
+        <h2>Boundary Value Analysis — Exam Clarification</h2>
+        <p>Boundary tests must include:</p>
+        <ul>
+            <li>minimum − 1</li>
+            <li>minimum</li>
+            <li>maximum</li>
+            <li>maximum + 1</li>
+        </ul>
+        <p>Testing only the boundary values is NOT sufficient.</p>
+
+        <h2>Why Testing Cannot Prove Correctness</h2>
+        <p>Testing can only show the presence of bugs, not their absence.</p>
+        <p>Reason:</p>
+        <ul>
+            <li>Only a finite number of test cases can be executed</li>
+            <li>It is impossible to test all possible inputs and execution paths</li>
+            <li>Therefore correctness cannot be proven by testing</li>
+        </ul>
+
+        <h2>Black-Box vs White-Box Testing (Comparison Table)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Black-Box Testing</th>
+                    <th>White-Box Testing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Knowledge of code</td>
+                    <td>No knowledge of internal implementation</td>
+                    <td>Full knowledge of code</td>
+                </tr>
+                <tr>
+                    <td>Based on</td>
+                    <td>Specification (requirements)</td>
+                    <td>Code structure</td>
+                </tr>
+                <tr>
+                    <td>Focus</td>
+                    <td>Inputs and outputs</td>
+                    <td>Statements, branches, paths</td>
+                </tr>
+                <tr>
+                    <td>Typical techniques</td>
+                    <td>Equivalence Partitioning, Boundary Value Analysis</td>
+                    <td>Statement coverage, branch coverage, path coverage</td>
+                </tr>
+                <tr>
+                    <td>Tester</td>
+                    <td>Usually QA/test engineers</td>
+                    <td>Developers</td>
+                </tr>
+                <tr>
+                    <td>Goal</td>
+                    <td>Find functional defects</td>
+                    <td>Ensure code logic is fully exercised</td>
+                </tr>
+                <tr>
+                    <td>Advantage</td>
+                    <td>Independent of implementation</td>
+                    <td>Can check internal logic thoroughly</td>
+                </tr>
+                <tr>
+                    <td>Limitation</td>
+                    <td>Cannot find hidden logic errors</td>
+                    <td>Cannot detect missing requirements</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>minint / maxint — Exam Clarification</h3>
+        <p><code>minint</code> and <code>maxint</code> represent the minimum and maximum<br>
+        values of the integer domain, used symbolically.</p>
+        <p>Use them ONLY IF:</p>
+        <ul>
+            <li>the exam explicitly mentions them, or</li>
+            <li>boundary analysis of “value of number” is required.</li>
+        </ul>
+        <p>Do NOT invent numeric limits if the question does not hint at them.</p>
+
+        <h1>Black-Box Testing — Mental Checklist (EXAM)</h1>
+        <p>Use this checklist for EVERY black-box testing question.</p>
+
+        <h2>1. Identify the Inputs</h2>
+        <ul>
+            <li>Look at the function signature</li>
+            <li>List ONLY the input variables</li>
+            <li>Constants (e.g., “today”) are NOT inputs</li>
+        </ul>
+
+        <h2>2. Identify Criteria</h2>
+        <p>For each input, ask:</p>
+        <ul>
+            <li>What PROPERTY of this input affects the output?</li>
+            <li>Look for comparisons, thresholds, conditions in the text</li>
+        </ul>
+        <p>Examples of criteria:</p>
+        <ul>
+            <li>age &lt; threshold</li>
+            <li>value inside / outside a range</li>
+            <li>empty / non-empty</li>
+            <li>valid / invalid</li>
+        </ul>
+
+        <h2>3. Define Equivalence Classes</h2>
+        <p>For each criterion:</p>
+        <ul>
+            <li>Split inputs into RANGES with the SAME behavior</li>
+            <li>Usually in the form:
+                <ul>
+                    <li>condition satisfied</li>
+                    <li>condition not satisfied</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Example:</p>
+        <ul>
+            <li>x &lt; 10</li>
+            <li>x ≥ 10</li>
+        </ul>
+
+        <h2>4. Identify Boundary Values</h2>
+        <p>For each numeric threshold:</p>
+        <ul>
+            <li>Test just BELOW the boundary</li>
+            <li>Test AT the boundary</li>
+            <li>(Optionally) test just ABOVE</li>
+        </ul>
+        <p>Boundaries are WHERE behavior may change.</p>
+
+        <h2>5. Combine Equivalence Classes</h2>
+        <ul>
+            <li>Combine classes from different criteria</li>
+            <li>Total combinations = product of class counts</li>
+            <li>Remove impossible or irrelevant combinations</li>
+        </ul>
+
+        <h2>6. Decide Expected Result</h2>
+        <ul>
+            <li>Use the logical conditions (AND / OR) from the text</li>
+            <li>Identify which combinations are VALID</li>
+            <li>All others are INVALID</li>
+        </ul>
+
+        <h2>7. Choose One Test Case per Combination</h2>
+        <ul>
+            <li>Pick ONE representative input for each combination</li>
+            <li>Do NOT overcomplicate</li>
+            <li>Always verify your numbers</li>
+        </ul>
+
+        <h2>Key Rule</h2>
+        <p>Equivalence classes tell you HOW MANY tests you need.<br>
+        Boundary values tell you WHERE to test.</p>
+
+        <h2>Black-Box Testing: Self-Questions Checklist</h2>
+        <ol>
+            <li>What is the function signature?<br>
+            → What are the input variables?</li>
+            <li>Which values are inputs, and which are constants given in the text?</li>
+            <li>For each input:<br>
+            → What property of this input affects the output?</li>
+            <li>Where in the text are comparisons or thresholds mentioned?<br>
+            → (&lt;, ≤, ≥, &gt;, AND, OR)</li>
+            <li>For each property:<br>
+            → When is the condition satisfied?<br>
+            → When is it not satisfied?</li>
+            <li>For each condition:<br>
+            → What are the equivalence classes (ranges with same behavior)?</li>
+            <li>Are there numeric thresholds?<br>
+            → What are the boundary values around them?</li>
+            <li>How many equivalence classes are there per criterion?</li>
+            <li>If I combine the equivalence classes:<br>
+            → How many total combinations do I get?</li>
+            <li>Which combinations should return TRUE?<br>
+            → Which should return FALSE?</li>
+            <li>Are any combinations impossible or irrelevant?<br>
+            → Can they be removed?</li>
+            <li>For each remaining combination:<br>
+            → Can I choose ONE simple representative test case?</li>
+            <li>Do my test cases actually satisfy the conditions?<br>
+            → Check with calculations, not intuition.</li>
+            <li>Did I test at least one boundary value?</li>
+            <li>Is my answer minimal, clear, and based on the specification (not guesses)?</li>
+        </ol>
+
+        <h1>White-Box Testing (EXAM CHEAT SHEET)</h1>
+        <p>White-box testing focuses on the INTERNAL STRUCTURE of the code.<br>
+        Test cases are designed to force execution of code paths.</p>
+
+        <h2>1. How to Recognize a White-Box Question</h2>
+        <p>A question is WHITE-BOX if it mentions:</p>
+        <ul>
+            <li>control flow graph (CFG)</li>
+            <li>node coverage</li>
+            <li>edge coverage</li>
+            <li>condition coverage</li>
+            <li>multiple condition coverage</li>
+            <li>loop coverage</li>
+            <li>path coverage</li>
+            <li>provides source code</li>
+        </ul>
+        <p>Equivalence classes and requirements are NOT used here.</p>
+
+        <h2>2. Golden Rule of White-Box Testing</h2>
+        <p>White-box testing is about EXECUTING CODE STRUCTURE,<br>
+        not about checking correctness of requirements.</p>
+        <p>Inputs are chosen to force execution paths.</p>
+
+        <h2>3. Control Flow Graph (CFG)</h2>
+        <h3>Nodes represent:</h3>
+        <ul>
+            <li>sequence of statements</li>
+            <li>decision points (if, else if)</li>
+            <li>loop headers</li>
+        </ul>
+
+        <h3>Edges represent:</h3>
+        <ul>
+            <li>flow of control</li>
+            <li>true / false outcomes</li>
+            <li>loop back edges</li>
+        </ul>
+        <p>A textual description of CFG is acceptable in exams.</p>
+
+        <h2>4. Decision Points</h2>
+        <p>Decision points are:</p>
+        <ul>
+            <li>if conditions</li>
+            <li>else-if conditions</li>
+            <li>loop conditions</li>
+        </ul>
+        <p>IMPORTANT:</p>
+        <ul>
+            <li>Count decision points in the CODE</li>
+            <li>NOT how many times they execute</li>
+        </ul>
+
+        <h2>5. Coverage Criteria (MUST KNOW BY HEART)</h2>
+        <h3>Node Coverage</h3>
+        <p>Every node executes at least once.</p>
+        <ul>
+            <li>Mutually exclusive nodes need separate test cases</li>
+            <li>Loop iterations do NOT increase test cases automatically</li>
+        </ul>
+
+        <h3>Edge Coverage</h3>
+        <p>Every edge (branch) executes at least once.</p>
+        <ul>
+            <li>TRUE and FALSE branches of each decision</li>
+            <li>Loop enter and loop exit must both occur</li>
+        </ul>
+
+        <h3>Condition Coverage</h3>
+        <p>Each boolean condition must evaluate to:</p>
+        <ul>
+            <li>TRUE at least once</li>
+            <li>FALSE at least once</li>
+        </ul>
+        <p>Example:<br>
+        if (A &amp;&amp; B)<br>
+        → A true, A false<br>
+        → B true, B false</p>
+
+        <h3>Multiple Condition Coverage</h3>
+        <p>All combinations of sub-conditions must be tested.</p>
+        <p>For A &amp;&amp; B:</p>
+        <ul>
+            <li>A=T, B=T</li>
+            <li>A=T, B=F</li>
+            <li>A=F, B=T</li>
+            <li>A=F, B=F</li>
+        </ul>
+
+        <h3>Loop Coverage</h3>
+        <p>Consider:</p>
+        <ul>
+            <li>0 iterations</li>
+            <li>1 iteration</li>
+            <li>more than 1 iteration</li>
+        </ul>
+        <p>If 0 iterations are impossible, state it explicitly.</p>
+
+        <h3>Path Coverage</h3>
+        <p>All execution paths must be executed.</p>
+        <p>Usually IMPOSSIBLE with loops.<br>
+        Correct exam answer:<br>
+        “Complete path coverage is infeasible due to the loop.”</p>
+
+        <h2>6. Writing Test Cases in White-Box Questions</h2>
+        <ul>
+            <li>Write ONLY input values if requested</li>
+            <li>Output is usually NOT required</li>
+            <li>Minimize number of test cases</li>
+        </ul>
+
+        <h2>7. Common Exam Traps</h2>
+        <ul>
+            <li>Using equivalence classes → WRONG</li>
+            <li>Too many test cases → BAD</li>
+            <li>Ignoring loops → WRONG</li>
+            <li>Forgetting mutually exclusive branches → WRONG</li>
+        </ul>
+
+        <h2>8. Mental Checklist (White-Box)</h2>
+        <ol>
+            <li>Where are the decisions?</li>
+            <li>Where are the loops?</li>
+            <li>Which nodes are mutually exclusive?</li>
+            <li>Which branches need TRUE and FALSE?</li>
+            <li>Can the loop run 0 times?</li>
+            <li>What is the MINIMUM set of inputs?</li>
+        </ol>
+        <p>Node coverage:<br>
+        → Count mutually exclusive nodes<br>
+        → Each exclusive outcome needs its own test<br>
+        → Loops do NOT multiply test cases</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Coverage type</th>
+                    <th>What must happen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Node coverage</td>
+                    <td>Condition must be TRUE at least once (to execute guarded statement)</td>
+                </tr>
+                <tr>
+                    <td>Edge coverage</td>
+                    <td>Condition must be TRUE <strong>and</strong> FALSE at least once</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Decision Points vs Executions</h3>
+        <p>A decision point is counted once per code location,<br>
+        NOT per execution or iteration.</p>
+        <p>Loops and if statements are decision points,<br>
+        regardless of how many times they run.</p>
+
+        <h3>Mutually Exclusive Nodes</h3>
+        <p>If multiple nodes cannot be executed in the same test case<br>
+        (e.g. if–else if–else branches),<br>
+        each such node requires a separate test case<br>
+        for node coverage.</p>
+
+        <h3>Node vs Edge Coverage</h3>
+        <p>Node coverage:</p>
+        <ul>
+            <li>each statement executes at least once</li>
+        </ul>
+        <p>Edge coverage:</p>
+        <ul>
+            <li>each branch (true/false) executes at least once</li>
+        </ul>
+
+        <h3>Simple vs Compound Conditions</h3>
+        <p>Simple condition:</p>
+        <ul>
+            <li>no logical operators (&gt;, &lt;, ==)</li>
+            <li>condition coverage = multiple condition coverage</li>
+        </ul>
+        <p>Compound condition:</p>
+        <ul>
+            <li>uses &amp;&amp; or ||</li>
+            <li>multiple condition coverage requires all combinations</li>
+        </ul>
+
+        <h3>Loop Coverage Rule</h3>
+        <p>If a loop cannot execute 0 times or 1 time,<br>
+        this must be stated explicitly in the exam.</p>
+
+        <h3>Path Coverage Rule</h3>
+        <p>Complete path coverage is usually infeasible<br>
+        when loops are present due to the large number of paths.</p>
+
+        <h3>White-Box Test Cases</h3>
+        <p>In white-box testing:</p>
+        <ul>
+            <li>test cases are input values only</li>
+            <li>output values are often not required</li>
+        </ul>
+
+        <h3>Edge Coverage Rule</h3>
+        <p>Loops are decision points and must be evaluated<br>
+        both true and false.</p>
+        <p>However, the number of test cases depends on<br>
+        whether multiple decision outcomes can be covered<br>
+        by the same input.</p>
+
+        <h3>Edge Coverage – Checklist Analogy</h3>
+        <p>Think of edge coverage as a checklist of decision outcomes.</p>
+        <p>For example:</p>
+        <ul>
+            <li>☐ loop condition = TRUE</li>
+            <li>☐ loop condition = FALSE</li>
+            <li>☐ if condition = TRUE</li>
+            <li>☐ if condition = FALSE</li>
+        </ul>
+        <p>A single test case can check multiple boxes at the same time.</p>
+        <p>You only need a new test case if at least one TRUE/FALSE outcome<br>
+        has not been exercised yet.</p>
+        <p>Loops are decisions too, but they do NOT require extra test cases<br>
+        if both loop outcomes (enter / exit) are already covered.</p>
+        <p>Edge coverage checks outcomes, not how many tests you write.</p>
+
+        <h3>Estimation – Exam Checklist</h3>
+        <ol>
+            <li>Distinguish effort from calendar time
+                <ul>
+                    <li>effort = person-hours</li>
+                    <li>calendar time = elapsed time</li>
+                </ul>
+            </li>
+            <li>Use:<br>
+            Calendar time = Effort / Team capacity</li>
+            <li>Team capacity =<br>
+            number of people × working hours per time unit</li>
+            <li>Real projects NEVER finish in ideal time<br>
+            → real duration is always MORE</li>
+            <li>In lifecycle cost questions:<br>
+            maintenance usually costs more than development</li>
+        </ol>
+
+        <h3>Estimation – Rearranged Formulas</h3>
+        <p>Effort = Team size × Hours per time unit × Calendar time</p>
+        <p>Calendar time = Effort / Team capacity</p>
+        <p>Team size = Effort / (Hours × Calendar time)</p>
+        <p>Always round UP team size.<br>
+        Real projects take MORE time than ideal estimates.</p>
+
+        <h3>BPMN – Exam Survival Guide</h3>
+        <p>BPMN models processes (workflow), not structure.</p>
+        <p>Minimum elements needed:</p>
+        <ul>
+            <li>Start Event (circle)</li>
+            <li>Task (rounded rectangle)</li>
+            <li>Gateway (diamond) for decisions</li>
+            <li>End Event (thick circle)</li>
+            <li>Sequence Flow (arrows)</li>
+        </ul>
+        <p>One start, clear flow, simple decisions.<br>
+        Ignore advanced BPMN elements unless explicitly required.</p>
+
+        <h3>When to use BPMN</h3>
+        <ul>
+            <li>Use BPMN when the problem describes:
+                <ul>
+                    <li>steps</li>
+                    <li>workflow</li>
+                    <li>sequence of actions</li>
+                    <li>decisions over time</li>
+                </ul>
+            </li>
+            <li>Keywords: “then”, “if”, “after”, “before”, “process”, “flow”</li>
+        </ul>
+
+        <h3>BPMN Start Event rule</h3>
+        <ul>
+            <li>The start event is the trigger of the process</li>
+            <li>Ask: “What causes the process to begin?”</li>
+            <li>Usually initiated by a user or external event</li>
+        </ul>
+
+        <h3>BPMN – Exam Checklist</h3>
+        <ol>
+            <li>Identify the trigger → Start Event</li>
+            <li>Convert verbs into Tasks</li>
+            <li>Use Gateway for IF / ELSE</li>
+            <li>Keep decisions simple (Yes / No)</li>
+            <li>End the process clearly</li>
+        </ol>
+
+        <h3>BPMN – Modeler Usage (Exam)</h3>
+        <p>Use only:</p>
+        <ul>
+            <li>Start Event (circle)</li>
+            <li>Task (rounded rectangle)</li>
+            <li>Exclusive Gateway (diamond)</li>
+            <li>End Event (thick circle)</li>
+            <li>Sequence Flow (arrows)</li>
+        </ul>
+        <p>Label tasks with verbs.<br>
+        Label gateways with a question.<br>
+        Ignore all advanced BPMN symbols.</p>
+
+        <!-- ================= THEORIES CONTENT ================= -->
+        <h1>Theories</h1>
+
+        <h2>1. Exhaustive Testing</h2>
+        <p><strong>Definition:</strong> Testing with correct output for ALL possible inputs.</p>
+        <p><strong>When feasible?</strong> Almost NEVER feasible (infinite test cases, testing requires resources).</p>
+        <p><strong>Key point:</strong> Goal of testing is to FIND defects, NOT prove absence of defects. No system is perfect.</p>
+
+        <h2>2. Oracle</h2>
+        <p><strong>Definition:</strong> Gives expected behavior of a program/function for a given test case.</p>
+        <p><strong>How to implement:</strong></p>
+        <ul>
+            <li>Use the requirements document to know what to expect.</li>
+            <li>Compare actual output vs. expected output.</li>
+            <li>Can be automated or manual.</li>
+        </ul>
+
+        <h2>3. Waterfall vs Agile</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Waterfall</th>
+                    <th>Agile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sequential phases</td>
+                    <td>Multiple iterations</td>
+                </tr>
+                <tr>
+                    <td>Fixed price model</td>
+                    <td>Time & material (dynamic price)</td>
+                </tr>
+                <tr>
+                    <td>Emphasis on documents</td>
+                    <td>No emphasis on documents</td>
+                </tr>
+                <tr>
+                    <td>One iteration, longer duration</td>
+                    <td>Multiple short iterations</td>
+                </tr>
+                <tr>
+                    <td>Changes have heavy impact</td>
+                    <td>Embraces changes</td>
+                </tr>
+                <tr>
+                    <td>Better for large projects, hardware dependencies, safety-critical</td>
+                    <td>Better for smaller projects, market-driven</td>
+                </tr>
+                <tr>
+                    <td>Requirements complete at start</td>
+                    <td>Requirements adjusted each iteration</td>
+                </tr>
+                <tr>
+                    <td>Estimations based on effort (cost x ph)</td>
+                    <td>Estimations based on effort × iterations</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Waterfall PROS:</strong> Requirements compliant with user needs, better for large teams/projects.<br>
+        <strong>Waterfall CONS:</strong> Changes require contract renegotiation, tension to avoid changes.</p>
+        <p><strong>Agile PRINCIPLES:</strong></p>
+        <ol>
+            <li>Communication</li>
+            <li>Simplicity</li>
+            <li>Feedback (customer satisfaction, on-site customer, small releases)</li>
+            <li>Courage</li>
+            <li>Coding standards</li>
+        </ol>
+
+        <h2>4. Architectural Patterns</h2>
+        <h3>Pipe and Filter:</h3>
+        <ul>
+            <li>Data flows in → filter is applied → data flows out.</li>
+            <li>Example: API.</li>
+            <li>Used for data transformation.</li>
+        </ul>
+        <h3>Repository:</h3>
+        <ul>
+            <li>One central data holder (or multiple that exchange).</li>
+            <li>Centralized management.</li>
+            <li>Subsystems MUST have common data model.</li>
+        </ul>
+        <h3>MVC (Model-View-Controller):</h3>
+        <ul>
+            <li><strong>Model:</strong> contains data.</li>
+            <li><strong>View:</strong> shows data.</li>
+            <li><strong>Controller:</strong> handles interaction between model and view.</li>
+        </ul>
+        <p><em>Note:</em> Separation of responsibilities, but more complex (less performance).</p>
+
+        <h2>5. Non-Functional Requirements</h2>
+        <p><strong>Types (remember USERMAPS):</strong></p>
+        <ul>
+            <li><strong>U</strong>sability - effort needed to learn and use (simplicity + readability).</li>
+            <li><strong>S</strong>ecurity - protection of users + their data.</li>
+            <li><strong>E</strong>fficiency - response time, memory usage.</li>
+            <li><strong>R</strong>eliability - defects over period of time (stress = reliability under limit conditions).</li>
+            <li><strong>M</strong>aintainability - effort needed to fix/maintain.</li>
+            <li><strong>A</strong>vailability.</li>
+            <li><strong>P</strong>ortability.</li>
+            <li><strong>S</strong>afety - absence of harm to user.</li>
+        </ul>
+        <p><strong>Key Points:</strong></p>
+        <ul>
+            <li>MUST be measurable (can't just say "easy to use").</li>
+            <li>Prioritize what's important TO USERS, not developers.</li>
+            <li>Describe HOW the product delivers functionalities.</li>
+        </ul>
+
+        <h2>6. Maintenance Change Types</h2>
+        <ul>
+            <li><strong>Corrective:</strong> Fixing defects/faults.</li>
+            <li><strong>Enhancement:</strong> Modification to existing function.</li>
+            <li><strong>Evolutive:</strong> New functions.</li>
+        </ul>
+
+        <h2>7. Regression Testing</h2>
+        <p><strong>Definition:</strong> After fixing a defect, tests previously defined are repeated to ensure the new change hasn't introduced new defects.</p>
+        <p><strong>Why needed:</strong> Fixing one fault can cause others (especially with multiple dependencies).</p>
+        <p><strong>How to avoid regression:</strong> Fix faults while using the same test suite - keeps product coherent.</p>
+
+        <h2>8. Software Correctness</h2>
+        <p><strong>Definition:</strong> Actual output matches expected output.</p>
+        <p><strong>Two types:</strong></p>
+        <ul>
+            <li><strong>Validation:</strong> External correctness (is it the RIGHT solution? What user asked for?).</li>
+            <li><strong>Verification:</strong> Internal correctness (is solution implemented correctly?).</li>
+        </ul>
+
+        <h2>9. Bottom-Up Integration Testing</h2>
+        <ul>
+            <li>Starts from single units.</li>
+            <li>Doesn't deliver high-level functionalities at first.</li>
+            <li>Easier to detect errors and know where they come from.</li>
+            <li>Uses stubs (fake unit, simpler) to simulate single function values.</li>
+            <li>Avoid BIG-BANG integration!</li>
+        </ul>
+
+        <h2>10. Coupling (Design Concept)</h2>
+        <p><strong>Definition:</strong> The degree to which two modules/components are connected.</p>
+        <p><strong>Examples:</strong> share of a variable, message passing, function call.</p>
+        <p><strong>Goal:</strong> Lower coupling = better (less dependency between components).</p>
+
+        <h2>11. Project Management Concepts</h2>
+        <h3>Calendar Time vs Effort:</h3>
+        <ul>
+            <li><strong>Effort</strong> = DURATION × RESOURCES (measured in Person Hours).</li>
+            <li><em>Note:</em> 1 person day = 7 ph.</li>
+            <li><strong>Calendar Time</strong> = Actual time on calendar (days, weeks, months).</li>
+        </ul>
+        <h3>Milestone:</h3>
+        <ul>
+            <li>Key event in the project.</li>
+            <li>Important to have limits (Parkinson's Law).</li>
+            <li>Tracks project evolution.</li>
+        </ul>
+
+        <h2>12. Component Reuse Impact</h2>
+        <p><strong>Impact on Requirements & Design:</strong></p>
+        <ul>
+            <li>Must be considered during BOTH requirements AND design phase.</li>
+            <li>Affects architecture decisions.</li>
+            <li>Consider constraints that follow component usage.</li>
+            <li>No control over component evolution (internal changes can affect your product).</li>
+        </ul>
+
+        <h2>13. Adapter Design Pattern</h2>
+        <p><strong>Purpose:</strong> Required class doesn't implement required interface.</p>
+        <p><strong>Solution:</strong> Adapter class is intermediate between required function class and required interface.</p>
+
+        <h2>14. Agile Iteration Length</h2>
+        <p><strong>Recommended:</strong> 2-4 weeks typically (short iterations).</p>
+        <p><strong>Why:</strong></p>
+        <ul>
+            <li>Fast feedback.</li>
+            <li>Early detection of defects.</li>
+            <li>Can adjust to user needs quickly.</li>
+            <li>Reduces regression risk.</li>
+        </ul>
+
+        <h2>15. Inspection Technique</h2>
+        <p><strong>For Source Code:</strong></p>
+        <ul>
+            <li>Reading documents/code.</li>
+            <li>Can find many defects at once (tests find one at a time).</li>
+            <li>Early inspections reduce avoidable rework.</li>
+            <li>Done by groups of people.</li>
+            <li>Use checklists to set standards.</li>
+            <li><strong>MISRA-C rules:</strong> Common guidelines for safer software (originally for C language).</li>
+        </ul>
+
+        <h2>Quick Reference Formulas</h2>
+        <ul>
+            <li><strong>Productivity</strong> = TOTAL SIZE / TOTAL EFFORT (person hours)</li>
+            <li><strong>Effort</strong> = DURATION × RESOURCES (person hours)</li>
+            <li><strong>Coverage</strong> = Entities considered by ≥1 test / All possible entities</li>
+        </ul>
+
+        <h2>Key Distinctions to Memorize</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Concept</th>
+                    <th>VS</th>
+                    <th>Distinction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Validation</td>
+                    <td>Verification</td>
+                    <td>External (right solution?) vs Internal (correctly implemented?)</td>
+                </tr>
+                <tr>
+                    <td>Failure</td>
+                    <td>Fault</td>
+                    <td>Unexpected execution vs Malfunction that causes failures</td>
+                </tr>
+                <tr>
+                    <td>Functional Requirements</td>
+                    <td>Non-Functional</td>
+                    <td>WHAT product does vs HOW it does it</td>
+                </tr>
+                <tr>
+                    <td>Top-down Testing</td>
+                    <td>Bottom-up</td>
+                    <td>Starts from high-level (design problems) vs Starts from units (easier error detection)</td>
+                </tr>
+                <tr>
+                    <td>Black Box</td>
+                    <td>White Box</td>
+                    <td>No internal code knowledge vs Based on source code</td>
+                </tr>
+                <tr>
+                    <td>Development</td>
+                    <td>Maintenance</td>
+                    <td>First implementation vs Constrained by what was done in development</td>
+                </tr>
+                <tr>
+                    <td>Coupling</td>
+                    <td>Cohesion</td>
+                    <td>Dependency between components vs Consistency within a component</td>
+                </tr>
+                <tr>
+                    <td>Waterfall</td>
+                    <td>Incremental (RUP)</td>
+                    <td>One iteration vs Multiple with partial integration each time</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Last-Minute Tips</h2>
+        <ul>
+            <li><strong>Exhaustive testing:</strong> Always answer: NOT feasible, infinite cases, goal is to FIND defects.</li>
+            <li><strong>Oracle:</strong> Answer: Use requirements document, compare actual vs expected.</li>
+            <li><strong>Waterfall vs Agile:</strong> Know the table above by heart.</li>
+            <li><strong>NFRs:</strong> Remember they must be MEASURABLE and prioritize USER needs.</li>
+            <li><strong>Regression:</strong> After fixing, re-run old tests to check no new defects.</li>
+            <li><strong>Architectural patterns:</strong> Focus on Pipe & Filter and Repository (most tested).</li>
+        </ul>
+
+    </div>
+</div>
+
+<script>
+    // Optional: Auto-print or helper logic could go here
+    console.log("Ready for printing. Use Ctrl+P / Cmd+P");
+</script>
+
+</body>
+</html>
